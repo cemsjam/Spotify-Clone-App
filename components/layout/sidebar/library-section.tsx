@@ -1,12 +1,12 @@
 import React from "react";
 import { LibrarySectionHeader } from "./library-section-header";
-import { LibraryItem } from "./library-item";
+import { LibraryItems } from "./library-item";
 
 export const LibrarySection = () => {
 	return (
-		<div>
+		<div className="grid grid-rows-[auto,1fr]">
 			<LibrarySectionHeader />
-			<LibraryItem />
+			<LibraryItems />
 		</div>
 	);
 };

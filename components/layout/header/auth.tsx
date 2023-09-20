@@ -17,23 +17,23 @@ import { JWT } from "next-auth/jwt";
 
 export const Auth = () => {
 	const { data: session } = useSession();
-	const [token, setToken] = useState<JWT | null>(null);
+	// const [token, setToken] = useState<JWT | string | null>(null);
 
-	useEffect(() => {
-		if (session && session.user && session.user.token) {
-			setToken(session.user.token);
-			console.log("token", token);
-		}
-		// if (token) {
-		// 	fetch("https://api.spotify.com/v1/tracks/2KrxsD86ARO5beq7Q0Drfqa", {
-		// 		headers: {
-		// 			Authentication: `Bearer ${JSON.stringify(token)}`,
-		// 		},
-		// 	})
-		// 		.then((res) => res.json())
-		// 		.then((json) => console.log(JSON.stringify(json)));
-		// }
-	}, [token, session]);
+	// console.log(session);
+	// useEffect(() => {
+	// 	if (session && session.user && session.user.accessToken) {
+	// 		setToken(session.user.accessToken);
+	// 	}
+	// 	if (token) {
+	// 		fetch(`https://api.spotify.com/v1/me/playlists`, {
+	// 			headers: {
+	// 				Authorization: `Bearer ${token}`,
+	// 			},
+	// 		})
+	// 			.then((res) => res.json())
+	// 			.then((json) => console.log(JSON.stringify(json)));
+	// 	}
+	// }, [token, session]);
 
 	if (session) {
 		return (
