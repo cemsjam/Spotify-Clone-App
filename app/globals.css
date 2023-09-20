@@ -25,10 +25,25 @@ body {
 
 	--border-radius-base: 8px;
 	--line-height-base: 1.6;
+
+	--scrollbar-width: 16px;
+	--scrollbar-thumb-color: hsla(0, 0%, 100%, 0.3);
 }
 
 body {
 	background-color: var(--background-base);
 	color: var(--text-base);
 	line-height: var(--line-height-base);
+}
+::-webkit-scrollbar {
+	width: var(--scrollbar-width);
+}
+::-webkit-scrollbar-thumb {
+	background-color: var(--scrollbar-thumb-color);
+}
+.library-section::-webkit-scrollbar-thumb {
+	background-color: transparent;
+}
+.library-section:hover::-webkit-scrollbar-thumb {
+	background-color: var(--scrollbar-thumb-color);
 }

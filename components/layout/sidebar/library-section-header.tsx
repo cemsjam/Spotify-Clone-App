@@ -41,10 +41,10 @@ export const LibrarySectionHeader = () => {
 				className="flex-1 flex items-center py-1 px-2"
 				onClick={toggleSidebar}
 			>
-				<span className="mr-3">{isOpen ? collapseIcon : expandIcon}</span>
+				<span>{isOpen ? collapseIcon : expandIcon}</span>
 				{isOpen && (
 					<>
-						<span className="text-subduedText font-bold hover:text-baseText transition-colors">
+						<span className="text-subduedText font-bold hover:text-baseText transition-colors ml-3">
 							Your Library
 						</span>
 					</>

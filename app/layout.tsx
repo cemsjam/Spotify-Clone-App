@@ -20,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="en">
 			<AuthProvider>
-				<body className={cn("font-sans flex flex-col p-panelGap")}>
+				<body className={cn("font-sans p-panelGap !h-screen flex flex-col")}>
 					<div className="flex-1 flex gap-panelGap">
 						<Sidebar />
 						<div className="flex-grow-[1.5] bg-componentBg">

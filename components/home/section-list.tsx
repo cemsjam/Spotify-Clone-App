@@ -1,10 +1,9 @@
+import { fetchDataInServer } from "@/utils/server-service";
 import React from "react";
 
-interface SectionListProps {
-	data: { id: number; creator?: string; type: string; songs?: number; coverImage: string }[];
-}
-
-export const SectionList = ({ data }: SectionListProps) => {
+export const SectionList = async () => {
+	const data = fetchDataInServer(`${process.env.SPOTIFY_API_URL}v1/browse/categories`);
+	if (!data || true) return null;
 	return (
 		<div>
 			{data.map((item) => (

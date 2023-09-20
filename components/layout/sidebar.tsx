@@ -1,19 +1,11 @@
-"use client";
 import { NavigationSection } from "./sidebar/navigation-section";
 import { LibrarySection } from "./sidebar/library-section";
-import { useSidebarStore } from "@/stores/sidebar-store";
-import { cn } from "@/utils/cn";
+import { SidebarLayout } from "./sidebar/sidebar-layout";
 
 export const Sidebar = () => {
-	const { isOpen } = useSidebarStore();
 	return (
-		<div
-			className={cn("sidebar-parent-grid flex-1", {
-				"max-w-leftSideBarMinifiedWidth": !isOpen,
-				"max-w-leftSideBarWidth": isOpen,
-			})}
-		>
-			<aside className="h-full flex flex-col gap-panelGap">
+		<SidebarLayout>
+			<aside className="h-full grid grid-rows-[auto,1fr] gap-panelGap">
 				<div className="py-2 px-3 bg-componentBg rounded-base">
 					<NavigationSection />
 				</div>
@@ -21,6 +13,6 @@ export const Sidebar = () => {
 					<LibrarySection />
 				</div>
 			</aside>
-		</div>
+		</SidebarLayout>
 	);
 };
