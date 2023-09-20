@@ -25,7 +25,7 @@ export const ActionTooltip = ({
 			<Tooltip delayDuration={delay}>
 				<TooltipTrigger asChild>{children}</TooltipTrigger>
 				<TooltipContent
-					className="p-1 bg-contextBg border-none rounded-sm text-sm"
+					className="p-1.5 bg-highlightBg border-none rounded-sm text-sm"
 					side={side}
 				>
 					{label}

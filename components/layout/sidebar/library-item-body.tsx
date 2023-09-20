@@ -23,12 +23,12 @@ export const LibraryItemBody = ({ item }: LibraryItemBodyProps) => {
 				<div className="isolate">
 					<Link
 						href="/todo"
-						className="flex items-center gap-panelGap relative after:content-[''] after:absolute after:inset-0 after:bg-highlightBg after:-z-10 after:opacity-0 hover:after:opacity-100"
+						className="flex items-center gap-panelGap relative after:content-[''] after:absolute after:left-0 after:-right-0 after:-bottom-1 after:-top-1 after:bg-highlightBg after:rounded-base after:-z-10 after:opacity-0 hover:after:opacity-100"
 					>
 						{/* image container */}
 						<div
 							className={cn(
-								"w-12 h-12 relative overflow-hidden rounded-[4px] flex-shrink-0 ",
+								"w-12 h-12 relative overflow-hidden rounded-md overflow-hidden flex-shrink-0 ",
 								{
 									"rounded-full": item.type === "artist",
 								}
@@ -43,7 +43,7 @@ export const LibraryItemBody = ({ item }: LibraryItemBodyProps) => {
 						{/* content container */}
 						<p className="flex flex-col gap-0.5">
 							<span className="capitalize">{item.name}</span>
-							<div className="text-subduedText flex gap-1">
+							<span className="text-subduedText flex gap-1">
 								<span className="capitalize">{item.type}</span>
 								<span>
 									{item.type === "playlist" && item.name !== "liked songs" && (
@@ -52,28 +52,8 @@ export const LibraryItemBody = ({ item }: LibraryItemBodyProps) => {
 											<span className="capitalize">{item.owner.display_name}</span>
 										</>
 									)}
-									{/* {item.type === "playlist" && item.name == "liked songs" && (
-										<>
-											<span className="mr-1">•</span>
-											<span className="capitalize">
-												<span className="font-bold">{item.songs}</span> songs
-											</span>
-										</>
-									)}
-									{item.type === "album" && (
-										<>
-											<span className="mr-1">•</span>
-											<span className="capitalize">{item.artist}</span>
-										</>
-									)}
-									{item.type === "podcast" && (
-										<>
-											<span className="mr-1">•</span>
-											<span className="capitalize">{item.creator}</span>
-										</>
-									)} */}
 								</span>
-							</div>
+							</span>
 						</p>
 					</Link>
 				</div>
@@ -83,7 +63,7 @@ export const LibraryItemBody = ({ item }: LibraryItemBodyProps) => {
 					label={
 						<p className="flex flex-col gap-0.5 p-1">
 							<span className="capitalize">{item.name}</span>
-							<div className="text-subduedText flex gap-1">
+							<span className="text-subduedText flex gap-1">
 								<span className="capitalize">{item.type}</span>
 								<span>
 									{item.type === "playlist" && item.name !== "liked songs" && (
@@ -92,33 +72,15 @@ export const LibraryItemBody = ({ item }: LibraryItemBodyProps) => {
 											<span className="capitalize">{item.owner.display_name}</span>
 										</>
 									)}
-									{/* {item.type === "playlist" && item.name == "liked songs" && (
-										<>
-											<span className="mr-1">•</span>
-											<span className="capitalize">{item.songs}</span>
-										</>
-									)}
-									{item.type === "album" && (
-										<>
-											<span className="mr-1">•</span>
-											<span className="capitalize">{item.artist}</span>
-										</>
-									)}
-									{item.type === "podcast" && (
-										<>
-											<span className="mr-1">•</span>
-											<span className="capitalize">{item.creator}</span>
-										</>
-									)} */}
 								</span>
-							</div>
+							</span>
 						</p>
 					}
 				>
 					<Link
 						href="/todo"
 						className={cn(
-							"block w-12 h-12 relative overflow-hidden rounded-[4px] flex-shrink-0 m-auto",
+							"block w-12 h-12 relative overflow-hidden rounded-md flex-shrink-0 m-auto",
 							{
 								"rounded-full": item.type === "artist",
 							}

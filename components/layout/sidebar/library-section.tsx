@@ -1,6 +1,6 @@
 import React from "react";
 import { LibrarySectionHeader } from "./library-section-header";
-import { LibraryItems } from "./library-item";
+import { LibraryItems } from "./library-items";
 
 export const LibrarySection = () => {
 	return (

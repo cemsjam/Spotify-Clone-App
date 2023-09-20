@@ -6,7 +6,7 @@ export const fetchDataInServer = async (URL: string, responseErrorMessage?: stri
 		if (session) {
 			const res = await fetch(URL, {
 				headers: {
-					Authorization: `Bearer ${session.user.accessToken}`,
+					Authorization: `Bearer ${session.accessToken}`,
 				},
 			});
 			if (!res.ok) {

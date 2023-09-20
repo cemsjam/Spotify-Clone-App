@@ -36,30 +36,38 @@ export const LibrarySectionHeader = () => {
 	const { isOpen, toggleSidebar } = useSidebarStore();
 	return (
 		<header className="flex items-center gap-panelGap py-2 px-4">
-			<button
-				type="button"
-				className="flex-1 flex items-center py-1 px-2"
-				onClick={toggleSidebar}
-			>
-				<span>{isOpen ? collapseIcon : expandIcon}</span>
-				{isOpen && (
-					<>
-						<span className="text-subduedText font-bold hover:text-baseText transition-colors ml-3">
-							Your Library
-						</span>
-					</>
-				)}
-			</button>
+			<div className="flex-1">
+				<ActionTooltip
+					side={isOpen ? "top" : "right"}
+					label={isOpen ? "Collapse Your Library" : "Expand Your Library"}
+				>
+					<button
+						type="button"
+						className="flex items-center py-1 px-2"
+						onClick={toggleSidebar}
+					>
+						<span>{isOpen ? collapseIcon : expandIcon}</span>
+						{isOpen && (
+							<>
+								<span className="text-subduedText font-bold hover:text-baseText transition-colors ml-3">
+									Your Library
+								</span>
+							</>
+						)}
+					</button>
+				</ActionTooltip>
+			</div>
+
 			{isOpen && (
 				<div className="flex gap-panelGap">
 					<ActionTooltip label="Create playlist or folder">
-						<button className="p-2">
+						<button className="p-2 rounded-full text-subduedText hover:text-baseText hover:bg-highlightBg transition-colors">
 							<AiOutlinePlus />
 							<span className="sr-only">Create Playlist or folder</span>
 						</button>
 					</ActionTooltip>
 					<ActionTooltip label="Show More">
-						<button className="p-2">
+						<button className="p-2 rounded-full text-subduedText hover:text-baseText hover:bg-highlightBg transition-colors">
 							<AiOutlineArrowRight />
 							<span className="sr-only">Show More</span>
 						</button>
