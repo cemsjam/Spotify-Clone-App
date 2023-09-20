@@ -14,11 +14,20 @@ const config: Config = {
 				subduedText: "var(--text-subdued)",
 				baseBg: "var(--background-base)",
 				componentBg: "var(--background-component)",
+				contextBg: "var(--background-context)",
+				highlightBg: "var(--background-highlight)",
+			},
+			maxWidth: {
+				leftSideBarWidth: "var(--left-sidebar-width)",
+				leftSideBarMinifiedWidth: "var(--left-sidebar-minified-width)",
 			},
 			width: {
 				leftSideBarWidth: "var(--left-sidebar-width)",
-				headerWidth: "var(--header-width)",
-				footerWidth: "var(--footer-width)",
+				leftSideBarMinifiedWidth: "var(--left-sidebar-minified-width)",
+			},
+			height: {
+				footerHeight: "var(--footer-height)",
+				headerHeight: "var(--header-height)",
 			},
 			spacing: {
 				panelGap: "var(--panel-gap)",

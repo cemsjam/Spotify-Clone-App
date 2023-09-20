@@ -9,8 +9,9 @@ body {
 
 :root {
 	--left-sidebar-width: 420px;
-	--header-width: 64px;
-	--footer-width: 72px;
+	--left-sidebar-minified-width: 72px;
+	--header-height: 64px;
+	--footer-height: 72px;
 	--panel-gap: 8px;
 
 	--background-base: #000;
@@ -19,6 +20,8 @@ body {
 	--primary: #1ed760;
 
 	--background-component: #121212;
+	--background-context: #282828;
+	--background-highlight: #1a1a1a;
 
 	--border-radius-base: 8px;
 	--line-height-base: 1.6;
@@ -28,38 +31,4 @@ body {
 	background-color: var(--background-base);
 	color: var(--text-base);
 	line-height: var(--line-height-base);
-}
-
-.layout-grid {
-	padding: var(--panel-gap);
-	height: 100%;
-	display: grid;
-	grid-template-columns: minmax(0, var(--left-sidebar-width)) 1fr;
-	grid-template-rows: auto 1fr auto;
-	grid-template-areas:
-		"sidebar main"
-		"sidebar main"
-		"footer footer";
-}
-
-.sidebar-parent-grid,
-.header-parent-grid,
-.sidebar-parent-grid {
-	grid-area: sidebar;
-	max-width: var(--left-sidebar-width);
-	width: 100%;
-}
-.header-parent-grid {
-	grid-area: header;
-	height: var(--header-width);
-}
-.footer-parent-grid {
-	grid-area: footer;
-	height: var(--footer-width);
-}
-.main-parent-grid {
-	grid-area: main;
-	margin-left: var(--panel-gap);
-	display: flex;
-	flex-direction: column;
 }
