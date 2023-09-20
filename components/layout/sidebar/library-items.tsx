@@ -14,13 +14,16 @@ export const LibraryItems = async () => {
 	);
 	if (!data) return null;
 	return (
-		<div className="library-section p-2 flex flex-col gap-panelGap max-h-[calc(100vh-var(--footer-height)-112px-66px)] overflow-hidden">
+		<ul
+			role="list"
+			className="library-section p-2 flex flex-col gap-panelGap max-h-[calc(100vh-var(--footer-height)-112px-66px)] overflow-y-auto overflow-x-hidden"
+		>
 			<LibraryItemBodyLikedSongs total={tracksData.total} />
 			{data.items.map((item) => (
-				<div key={item.id}>
+				<li key={item.id}>
 					<LibraryItemBody item={item} />
-				</div>
+				</li>
 			))}
-		</div>
+		</ul>
 	);
 };

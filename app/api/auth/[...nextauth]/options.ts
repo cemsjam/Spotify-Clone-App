@@ -1,17 +1,26 @@
-import { NextAuthOptions } from "next-auth";
+import { NextAuthOptions, Session } from "next-auth";
 import SpotifyProvider from "next-auth/providers/spotify";
-import { User } from "next-auth";
+
+import { refreshAccessToken } from "@/utils/refreshToken";
+
+const SPOTIFY_SCOPES = "user-library-read user-read-email";
 declare module "next-auth" {
 	interface Session {
-		user: User & {
-			accessToken: string;
-		};
+		accessToken?: string;
+		error?: string;
+	}
+	interface Account {
+		expires_at: number;
 	}
 }
 
 declare module "next-auth/jwt" {
 	interface JWT {
 		accessToken?: string;
+		refreshToken?: string;
+		accessTokenExpires?: number;
+		error?: string;
+		user?: Session["user"];
 	}
 }
 
@@ -22,21 +31,32 @@ export const authOptions: NextAuthOptions = {
 			clientSecret: process.env.SPOTIFY_CLIENT_SECRET as string,
 			authorization: {
 				params: {
-					scope: "user-library-read user-read-email",
+					scope: SPOTIFY_SCOPES,
 				},
 			},
 		}),
 	],
 	callbacks: {
-		async jwt({ token, account }) {
-			// console.log(account, token);
-			if (account) {
-				token.accessToken = account.access_token;
+		async jwt({ token, account, user }) {
+			if (account && user) {
+				return {
+					accessToken: account.access_token,
+					refreshToken: account.refresh_token,
+					accessTokenExpires: account.expires_at * 1000,
+					user,
+				};
 			}
-			return token;
+			if (token.accessTokenExpires && Date.now() < (token.accessTokenExpires as number)) {
+				return token;
+			}
+			const newToken = await refreshAccessToken(token);
+			return newToken;
 		},
+
 		async session({ token, session }) {
-			session.user.accessToken = token.accessToken || "";
+			session.accessToken = token.accessToken;
+			session.error = token.error;
+			session.user = token.user;
 			return session;
 		},
 	},

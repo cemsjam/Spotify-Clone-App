@@ -28,6 +28,8 @@ body {
 
 	--scrollbar-width: 16px;
 	--scrollbar-thumb-color: hsla(0, 0%, 100%, 0.3);
+
+	--home-page-accent-bg: rgb(112, 112, 176);
 }
 
 body {
@@ -40,6 +42,12 @@ body {
 }
 ::-webkit-scrollbar-thumb {
 	background-color: var(--scrollbar-thumb-color);
+}
+::-webkit-scrollbar-track {
+	background-color: transparent;
+	/* Firefox */
+	scrollbar-width: thin; /* "auto" or "thin" depending on your preference */
+	scrollbar-color: transparent transparent; /* track-color thumb-color */
 }
 .library-section::-webkit-scrollbar-thumb {
 	background-color: transparent;

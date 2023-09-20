@@ -6,6 +6,7 @@ interface SectionHeaderProps {
 	label: string;
 	hideButton?: boolean;
 	headingClasses?: string;
+	containerClasses?: string;
 }
 
 export const SectionHeader = ({
@@ -13,9 +14,10 @@ export const SectionHeader = ({
 	label,
 	hideButton = false,
 	headingClasses,
+	containerClasses,
 }: SectionHeaderProps) => {
 	return (
-		<div className="flex items-center justify-between">
+		<div className={cn("flex items-center justify-between", containerClasses)}>
 			<h2 className={cn("capitalize", headingClasses)}>{label}</h2>
 			{!hideButton && (
 				<Link className="text-subduedText" href={href}>

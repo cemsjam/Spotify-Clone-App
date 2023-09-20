@@ -16,7 +16,7 @@ export const LibraryItemBodyLikedSongs = ({ total }: { total: number }) => {
 				<div className="isolate">
 					<Link
 						href="/todo"
-						className="flex items-center gap-panelGap relative after:content-[''] after:absolute after:-inset-2 after:bg-highlightBg after:-z-10 after:opacity-0 hover:after:opacity-100"
+						className="flex items-center gap-panelGap relative after:content-[''] after:rounded-base after:absolute after:left-0 after:-right-0 after:-bottom-1 after:-top-1 after:bg-highlightBg after:-z-10 after:opacity-0 hover:after:opacity-100"
 					>
 						{/* image container */}
 						<div className="w-12 h-12 relative overflow-hidden rounded-[4px] flex-shrink-0">
@@ -29,13 +29,13 @@ export const LibraryItemBodyLikedSongs = ({ total }: { total: number }) => {
 						{/* content container */}
 						<p className="flex flex-col gap-0.5">
 							<span className="capitalize">Liked Songs</span>
-							<div className="text-subduedText flex gap-1">
+							<span className="text-subduedText flex gap-1">
 								<span className="capitalize">Playlist</span>
 								<span>
 									<span className="mr-1">•</span>
 									<span>{total} songs</span>
 								</span>
-							</div>
+							</span>
 						</p>
 					</Link>
 				</div>
@@ -45,19 +45,19 @@ export const LibraryItemBodyLikedSongs = ({ total }: { total: number }) => {
 					label={
 						<p className="flex flex-col gap-0.5 p-1">
 							<span className="capitalize">Liked Songs</span>
-							<div className="text-subduedText flex gap-1">
+							<span className="text-subduedText flex gap-1">
 								<span className="capitalize">Playlist</span>
 								<span>
 									<span className="mr-1">•</span>
 									<span>{total} songs</span>
 								</span>
-							</div>
+							</span>
 						</p>
 					}
 				>
 					<Link
 						href="/todo"
-						className="block w-12 h-12 relative overflow-hidden rounded-[4px] flex-shrink-0 m-auto"
+						className="block w-12 h-12 relative overflow-hidden rounded-md flex-shrink-0 m-auto"
 					>
 						<Image
 							fill={true}
