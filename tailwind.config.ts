@@ -10,6 +10,7 @@ const config: Config = {
 		extend: {
 			colors: {
 				primary: "var(--primary)",
+				primaryHighlight: "var(--primary-highlight)",
 				baseText: "var(--text-base)",
 				subduedText: "var(--text-subdued)",
 				baseBg: "var(--background-base)",

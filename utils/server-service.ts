@@ -28,7 +28,7 @@ export const getCurrentUserInServer = async () => {
 		if (session) {
 			const res = await fetch(`${process.env.SPOTIFY_API_URL}me`, {
 				headers: {
-					Authorization: `Bearer ${session.user.accessToken}`,
+					Authorization: `Bearer ${session.accessToken}`,
 				},
 			});
 			if (!res.ok) {
