@@ -3,6 +3,7 @@ import { fetchDataInServer } from "@/utils/server-service";
 
 import { PlaylistHero } from "@/components/playlist/playlist-hero";
 import { PlaylistActions } from "@/components/playlist/playlist-actions";
+import { TrackTable } from "@/components/playlist/track-table";
 
 const PlaylistIdPage = async ({ params }: { params: { playlistId: string } }) => {
 	const { playlistId } = params;
@@ -11,7 +12,7 @@ const PlaylistIdPage = async ({ params }: { params: { playlistId: string } }) =>
 		"[FETCH_PLAYLIST_ID_PAGE]"
 	);
 	if (!data) return null;
-	// console.log("playlistId", data);
+	// console.log("playlistId", data.tracks.items);
 	const { name, owner, images, description } = data;
 	const { total } = data.tracks;
 	const heroProps = { name, owner, images, total, description };
@@ -20,7 +21,8 @@ const PlaylistIdPage = async ({ params }: { params: { playlistId: string } }) =>
 	return (
 		<div>
 			<PlaylistHero {...heroProps} />
-			<PlaylistActions />
+			<PlaylistActions label={name} />
+			<TrackTable tracks={data.tracks.items} />
 		</div>
 	);
 };

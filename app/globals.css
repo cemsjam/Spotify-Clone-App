@@ -31,6 +31,9 @@ body {
 	--scrollbar-thumb-color: hsla(0, 0%, 100%, 0.3);
 
 	--home-page-accent-bg: rgb(112, 112, 176);
+
+	--track-table-header-height: 36px;
+	--track-table-body-height: 56px;
 }
 
 body {
@@ -55,4 +58,35 @@ body {
 }
 .library-section:hover::-webkit-scrollbar-thumb {
 	background-color: var(--scrollbar-thumb-color);
+}
+
+.track-table-header,
+.track-table-body {
+	display: grid;
+	grid-template-columns: [index] 16px [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(
+			120px,
+			1fr
+		);
+
+	gap: 1rem;
+}
+.track-table-body > *,
+.track-table-header > * {
+	display: flex;
+	align-items: center;
+}
+.track-table-header {
+	background-color: var(--background-highlight);
+	height: var(--track-table-header-height);
+	color: var(--text-subdued);
+	border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
+	text-transform: capitalize;
+	position: sticky;
+	top: 0;
+	margin-bottom: 1rem;
+	padding: 0 2.5rem;
+}
+.track-table-body {
+	height: var(--track-table-body-height);
+	padding: 0 1rem;
 }
