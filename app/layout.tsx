@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				<body className={cn("font-sans p-panelGap !h-screen flex flex-col")}>
 					<div className="flex-1 flex gap-panelGap">
 						<Sidebar />
-						<div className="flex-grow-[8] bg-componentBg">
+						<div className="flex-grow-[8] bg-componentBg rounded-base overflow-hidden">
 							<Header />
 							<main>{children}</main>
 						</div>

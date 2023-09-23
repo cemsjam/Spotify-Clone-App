@@ -41,3 +41,13 @@ export const getCurrentUserInServer = async () => {
 		console.log("Internal Error", error);
 	}
 };
+
+export const getTokenInServer = async () => {
+	try {
+		const session = await getServerAuthSession();
+		if (!session) throw new Error("[GET_TOKEN_IN_SERVER],Unauthorized");
+		if (session) return session.accessToken;
+	} catch (error) {
+		console.log("Internal Error", error);
+	}
+};

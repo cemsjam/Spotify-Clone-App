@@ -25,10 +25,10 @@ export const ActionTooltip = ({
 			<Tooltip delayDuration={delay}>
 				<TooltipTrigger asChild>{children}</TooltipTrigger>
 				<TooltipContent
-					className="p-1.5 bg-highlightBg border-none rounded-sm text-sm"
+					className="py-1 px-2 bg-contextBg border-none rounded-[4px] max-w-[50ch] text-baseText text-sm shadow-tooltip z-[100] "
 					side={side}
 				>
-					{label}
+					<span className="line-clamp-4">{label}</span>
 				</TooltipContent>
 			</Tooltip>
 		</TooltipProvider>

@@ -1,5 +1,8 @@
-import React from "react";
+import { getTokenInServer } from "@/utils/server-service";
+import { FooterPlayer } from "./footer/footer-player";
 
-export const Footer = () => {
-	return <footer className="h-footerHeight flex-shrink-0">Footer</footer>;
+export const Footer = async () => {
+	const token = await getTokenInServer();
+	if (!token) return null;
+	return <FooterPlayer token={token} uris={"spotify:artist:6HQYnRM4OzToCYPpVBInuU"} />;
 };

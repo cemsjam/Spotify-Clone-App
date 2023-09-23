@@ -19,7 +19,7 @@ const PlaylistIdPage = async ({ params }: { params: { playlistId: string } }) =>
 
 	// console.log(data);
 	return (
-		<div>
+		<div className="h-[calc(100vh-var(--header-height)-var(--footer-height)-var(--panel-gap))] overflow-y-auto">
 			<PlaylistHero {...heroProps} />
 			<PlaylistActions label={name} />
 			<TrackTable tracks={data.tracks.items} />

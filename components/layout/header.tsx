@@ -5,8 +5,8 @@ import { Auth } from "./header/auth";
 
 export const Header = () => {
 	return (
-		<header className="h-headerHeight py-4 px-6">
-			<div className="flex items-center gap-panelGap">
+		<header className="h-headerHeight py-4 px-6 sticky top-0 z-[50] bg-componentBg flex items-center">
+			<div className="flex-1 flex items-center gap-panelGap">
 				<HistoryActions />
 				<SearchBar />
 				<Auth />
