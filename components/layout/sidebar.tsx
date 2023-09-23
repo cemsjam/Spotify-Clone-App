@@ -9,7 +9,7 @@ export const Sidebar = () => {
 				<div className="py-2 px-3 bg-componentBg rounded-base">
 					<NavigationSection />
 				</div>
-				<div className="flex-1 bg-componentBg rounded-base">
+				<div className="flex-1 bg-componentBg rounded-base overflow-hidden">
 					<LibrarySection />
 				</div>
 			</aside>

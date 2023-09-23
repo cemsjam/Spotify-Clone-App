@@ -12,28 +12,9 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/shadcn/dropdown-menu";
 import { Button } from "@/components/shadcn/button";
-import { useEffect, useState } from "react";
-import { JWT } from "next-auth/jwt";
 
 export const Auth = () => {
 	const { data: session } = useSession();
-	// const [token, setToken] = useState<JWT | string | null>(null);
-
-	// console.log(session);
-	// useEffect(() => {
-	// 	if (session && session.user && session.user.accessToken) {
-	// 		setToken(session.user.accessToken);
-	// 	}
-	// 	if (token) {
-	// 		fetch(`https://api.spotify.com/v1/me/playlists`, {
-	// 			headers: {
-	// 				Authorization: `Bearer ${token}`,
-	// 			},
-	// 		})
-	// 			.then((res) => res.json())
-	// 			.then((json) => console.log(JSON.stringify(json)));
-	// 	}
-	// }, [token, session]);
 
 	if (session) {
 		return (

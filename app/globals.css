@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* #region GENERAL */
 html,
 body {
 	height: 100%;
@@ -27,6 +28,8 @@ body {
 	--border-radius-base: 8px;
 	--line-height-base: 1.6;
 
+	--action-tooltip-box-shadow: 0 16px 24px rgba(0, 0, 0, 0.3), 0 6px 8px rgba(0, 0, 0, 0.2);
+
 	--scrollbar-width: 16px;
 	--scrollbar-thumb-color: hsla(0, 0%, 100%, 0.3);
 
@@ -34,12 +37,16 @@ body {
 
 	--track-table-header-height: 36px;
 	--track-table-body-height: 56px;
+
+	/* z-indexes */
+	--track-table-header-sticky-header-zindex: 50;
 }
 
 body {
 	background-color: var(--background-base);
 	color: var(--text-base);
 	line-height: var(--line-height-base);
+	@apply antialiased;
 }
 ::-webkit-scrollbar {
 	width: var(--scrollbar-width);
@@ -53,13 +60,15 @@ body {
 	scrollbar-width: thin; /* "auto" or "thin" depending on your preference */
 	scrollbar-color: transparent transparent; /* track-color thumb-color */
 }
+/* #endregion */
+
 .library-section::-webkit-scrollbar-thumb {
 	background-color: transparent;
 }
 .library-section:hover::-webkit-scrollbar-thumb {
 	background-color: var(--scrollbar-thumb-color);
 }
-
+/* #region TABLE STYLES */
 .track-table-header,
 .track-table-body {
 	display: grid;
@@ -83,6 +92,7 @@ body {
 	text-transform: capitalize;
 	position: sticky;
 	top: 0;
+	z-index: var(--track-table-header-sticky-header-zindex);
 	margin-bottom: 1rem;
 	padding: 0 2.5rem;
 }
@@ -90,3 +100,19 @@ body {
 	height: var(--track-table-body-height);
 	padding: 0 1rem;
 }
+
+/* #endregion */
+
+/* #region PLAYER SPECIFIC STYLES */
+button[aria-label="Play"],
+button[aria-label="Pause"] {
+	color: var(--text-base);
+}
+[data-component-name="Info"] {
+	min-height: var(--footer-height) !important;
+}
+a[aria-label="Play on Spotify"] {
+	display: none;
+}
+
+/* #endregion */

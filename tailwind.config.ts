@@ -36,6 +36,9 @@ const config: Config = {
 			borderRadius: {
 				base: "var(--border-radius-base)",
 			},
+			boxShadow: {
+				tooltip: "var(--action-tooltip-box-shadow)",
+			},
 		},
 	},
 	plugins: [],
