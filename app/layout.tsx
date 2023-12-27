@@ -25,6 +25,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 						<Sidebar />
 						<div className="flex-grow-[8] bg-componentBg rounded-base overflow-hidden">
 							<Header />
+							<BackgroundSetter />
+
 							<main>{children}</main>
 						</div>
 					</div>

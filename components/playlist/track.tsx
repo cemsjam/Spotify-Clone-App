@@ -55,7 +55,6 @@ export const Track = ({ data }: TrackProps) => {
 	const { album } = track;
 
 	const isActivelyPlaying = currentTrack === track.uri;
-
 	return (
 		<li
 			className="track-table-body hover:bg-contextBg rounded-sm group"

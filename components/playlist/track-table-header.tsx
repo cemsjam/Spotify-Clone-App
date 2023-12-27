@@ -8,7 +8,7 @@ import { ActionTooltip } from "../ActionTooltip";
 export const TrackTableHeader = () => {
 	const targetRef = useRef<HTMLDivElement | null>(null);
 	const { isSticky } = useDetectSticky(targetRef);
-	console.log(isSticky);
+	// console.log(isSticky);
 	return (
 		<div ref={targetRef} className="track-table-header">
 			<div>#</div>
