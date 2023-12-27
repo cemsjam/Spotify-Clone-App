@@ -26,6 +26,7 @@ export const PlaylistHero = ({
 						<Image
 							src={images[1]?.url ? images[1]?.url : images[0]?.url}
 							fill
+							sizes="25vw"
 							alt={name + "cover photo"}
 						/>
 					)}
