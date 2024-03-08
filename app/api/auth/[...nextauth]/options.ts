@@ -4,7 +4,7 @@ import SpotifyProvider from "next-auth/providers/spotify";
 import { refreshAccessToken } from "@/utils/refreshToken";
 
 const SPOTIFY_SCOPES =
-	"user-library-read user-library-modify user-read-email user-read-private streaming user-read-playback-state user-modify-playback-state";
+	"user-library-read user-library-modify user-read-email user-read-private streaming user-read-playback-state user-modify-playback-state playlist-modify-public playlist-modify-private";
 declare module "next-auth" {
 	interface Session {
 		accessToken?: string;

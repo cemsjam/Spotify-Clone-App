@@ -17,7 +17,7 @@ const PlaylistIdPage = async ({ params }: { params: { playlistId: string } }) =>
 	const { total } = data.tracks;
 	const heroProps = { name, owner, images, total, description };
 
-	// console.log(data);
+	// console.log(images[1]?.url ? images[1]?.url : images[0]?.url);
 	return (
 		<div className="h-[calc(100vh-var(--header-height)-var(--footer-height)-var(--panel-gap))] overflow-y-auto">
 			<PlaylistHero {...heroProps} />

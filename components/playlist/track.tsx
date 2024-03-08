@@ -68,7 +68,7 @@ export const Track = ({ data }: TrackProps) => {
 						"text-primary": isActivelyPlaying,
 					})}
 				>
-					{!isHovered && index}
+					{!isHovered && index + 1}
 				</span>
 				{isHovered && (
 					<ActionTooltip side="top" label={"Play " + track.name}>
