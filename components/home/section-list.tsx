@@ -1,4 +1,5 @@
 import { PlaylistApiResponse } from "@/types";
+
 import { fetchDataInServer } from "@/utils/server-service";
 import React from "react";
 import { SectionCard } from "./section-card";
@@ -9,7 +10,10 @@ export const SectionList = async () => {
 		`${process.env.SPOTIFY_API_URL}v1/me/playlists?limit=10&offset=0`,
 		"[FETCH_CURRENT_USER_PLAYLIST_SECTION_LIST]"
 	);
-	if (!data) return null;
+
+	if (!data) {
+		return null;
+	}
 	return (
 		<>
 			<SectionHeader
