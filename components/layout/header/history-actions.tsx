@@ -22,7 +22,7 @@ export const HistoryActions = () => {
 					type="button"
 					className="w-8 h-8 flex items-center justify-center bg-black/70 rounded-full"
 				>
-					<PiCaretLeftLight />
+					<PiCaretLeftLight size={22} />
 				</button>
 			</ActionTooltip>
 			<ActionTooltip side="bottom" label="Go Forward">
@@ -30,7 +30,7 @@ export const HistoryActions = () => {
 					type="button"
 					className="w-8 h-8 flex items-center justify-center bg-black/70 rounded-full"
 				>
-					<PiCaretRightLight />
+					<PiCaretRightLight size={22} />
 				</button>
 			</ActionTooltip>
 		</div>

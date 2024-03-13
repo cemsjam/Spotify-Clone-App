@@ -52,13 +52,13 @@ export const Auth = () => {
 		);
 	}
 	return (
-		<>
+		<div className="ml-auto">
 			<Button
 				onClick={() => signIn("spotify")}
-				className="p-0 h-12 w-[110px] rounded-full bg-white text-black font-bold hover:scale-105"
+				className=" py-2 text-base h-12 w-[110px] rounded-full bg-white text-black font-bold hover:scale-105 "
 			>
-				<span className="px-8 py-2 ">Log in</span>
+				Log in
 			</Button>
-		</>
+		</div>
 	);
 };
