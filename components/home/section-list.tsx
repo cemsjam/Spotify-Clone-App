@@ -15,7 +15,7 @@ export const SectionList = async () => {
 		return null;
 	}
 	return (
-		<>
+		<div className="px-2 lg:px-4 pt-2">
 			<SectionHeader
 				href="/"
 				label="Recently Played"
@@ -30,6 +30,6 @@ export const SectionList = async () => {
 					<SectionCard key={item.id} {...item} />
 				))}
 			</section>
-		</>
+		</div>
 	);
 };
