@@ -5,6 +5,7 @@ import { useSidebarStore } from "@/stores/sidebar-store";
 
 import { ActionTooltip } from "@/components/ActionTooltip";
 import { useSession } from "next-auth/react";
+import { cn } from "@/utils/cn";
 
 const collapseIcon = (
 	<svg
@@ -36,12 +37,15 @@ const expandIcon = (
 export const LibrarySectionHeader = () => {
 	const { isOpen, toggleSidebar } = useSidebarStore();
 	const { status } = useSession();
+
+	const isLoggedIn = status === "authenticated";
 	return (
 		<header className="flex items-center gap-panelGap py-2 px-4">
 			<div className="flex-1">
 				<ActionTooltip
 					side={isOpen ? "top" : "right"}
 					label={isOpen ? "Collapse Your Library" : "Expand Your Library"}
+					disabled={!isLoggedIn}
 				>
 					<button
 						type="button"
@@ -66,8 +70,16 @@ export const LibrarySectionHeader = () => {
 
 			{isOpen && (
 				<div className="flex gap-panelGap">
-					<ActionTooltip label="Create playlist or folder">
-						<button className="p-2 rounded-full text-subduedText hover:text-baseText hover:bg-highlightBg transition-colors">
+					<ActionTooltip label="Create playlist or folder" disabled={!isLoggedIn}>
+						<button
+							disabled={!isLoggedIn}
+							className={cn(
+								"disabled:cursor-not-allowed p-2 rounded-full text-subduedText   transition-colors",
+								{
+									"hover:text-baseText hover:bg-highlightBg": isLoggedIn,
+								}
+							)}
+						>
 							<AiOutlinePlus />
 							<span className="sr-only">Create Playlist or folder</span>
 						</button>
