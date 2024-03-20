@@ -20,7 +20,7 @@ export const SectionHeader = ({
 		<div className={cn("flex items-center justify-between", containerClasses)}>
 			<h2 className={cn("capitalize", headingClasses)}>{label}</h2>
 			{!hideButton && (
-				<Link className="text-subduedText" href={href}>
+				<Link className="text-[#b3b3b3] text-sm font-semibold" href={href}>
 					Show all
 				</Link>
 			)}

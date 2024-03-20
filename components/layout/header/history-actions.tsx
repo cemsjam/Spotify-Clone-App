@@ -1,34 +1,33 @@
-"use client";
-import { useRouter } from "next/navigation";
-
 import { ActionTooltip } from "@/components/ActionTooltip";
 import { PiCaretLeftLight, PiCaretRightLight } from "react-icons/pi";
+import { cn } from "@/utils/cn";
+import { getServerAuthSession } from "@/utils/auth";
 
-export const HistoryActions = () => {
-	const router = useRouter();
+export const HistoryActions = async () => {
+	const session = await getServerAuthSession();
 
-	const handleGoBack = () => {
-		router.back();
-	};
-
-	const handleForward = () => {
-		router.forward();
-	};
+	const isDisabled = !session;
 
 	return (
 		<div className="flex gap-panelGap">
-			<ActionTooltip side="bottom" label="Go Back">
+			<ActionTooltip side="bottom" label="Go Back" disabled={isDisabled}>
 				<button
 					type="button"
-					className="w-8 h-8 flex items-center justify-center bg-black/70 rounded-full"
+					disabled={isDisabled}
+					className={cn("w-8 h-8 flex items-center justify-center bg-black/70 rounded-full", {
+						"bg-transparent cursor-not-allowed": isDisabled,
+					})}
 				>
 					<PiCaretLeftLight size={22} />
 				</button>
 			</ActionTooltip>
-			<ActionTooltip side="bottom" label="Go Forward">
+			<ActionTooltip side="bottom" label="Go Forward" disabled={isDisabled}>
 				<button
 					type="button"
-					className="w-8 h-8 flex items-center justify-center bg-black/70 rounded-full"
+					disabled={isDisabled}
+					className={cn("w-8 h-8 flex items-center justify-center bg-black/70 rounded-full", {
+						"bg-transparent cursor-not-allowed": isDisabled,
+					})}
 				>
 					<PiCaretRightLight size={22} />
 				</button>
