@@ -20,14 +20,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="en">
 			<AuthProvider>
-				<body className={cn("font-sans p-panelGap !h-screen flex flex-col")}>
+				<body className={cn("font-sans p-panelGap !h-screen flex flex-col overflow-hidden")}>
 					<div className="flex-1 flex gap-panelGap">
 						<Sidebar />
 						<div className="flex-grow-[8] bg-componentBg rounded-base overflow-hidden">
 							<Header />
+
+							<main className="h-[calc(100vh-var(--header-height)-var(--footer-height)-var(--panel-gap))] overflow-y-auto">
+								{children}
+							</main>
+
 							<BackgroundSetter />
 
 							<main>{children}</main>
+
 						</div>
 					</div>
 					<Footer />

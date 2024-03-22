@@ -15,7 +15,7 @@ export const LibraryItemBodyLikedSongs = ({ total }: { total: number }) => {
 			{isOpen ? (
 				<div className="isolate">
 					<Link
-						href="/todo"
+						href="/collection/tracks"
 						className="flex items-center gap-panelGap relative after:content-[''] after:rounded-base after:absolute after:left-0 after:-right-0 after:-bottom-1 after:-top-1 after:bg-highlightBg after:-z-10 after:opacity-0 hover:after:opacity-100"
 					>
 						{/* image container */}
@@ -57,7 +57,7 @@ export const LibraryItemBodyLikedSongs = ({ total }: { total: number }) => {
 					}
 				>
 					<Link
-						href="/todo"
+						href="/collection/tracks"
 						className="block w-12 h-12 relative overflow-hidden rounded-md flex-shrink-0 m-auto"
 					>
 						<Image

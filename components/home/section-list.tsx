@@ -1,12 +1,25 @@
+import React from "react";
+
 import { PlaylistApiResponse } from "@/types";
 
 import { fetchDataInServer } from "@/utils/server-service";
-import React from "react";
-import { SectionCard } from "./section-card";
-import { SectionHeader } from "../section-header";
+import { SectionCard, SectionCardVariants } from "./section-card";
 
-export const SectionList = async () => {
+export type SectionListTypes = {
+	variant: SectionCardVariants;
+};
+
+export const SectionList = async ({
+	variant,
+	sectionClasses,
+	limit = 10,
+}: {
+	variant: SectionCardVariants;
+	sectionClasses: string;
+	limit?: number;
+}) => {
 	const data: PlaylistApiResponse = await fetchDataInServer(
+		`${process.env.SPOTIFY_API_URL}v1/me/playlists?limit=${limit}&offset=0`,
 		`${process.env.SPOTIFY_API_URL}v1/me/playlists?limit=10&offset=0`,
 		"[FETCH_CURRENT_USER_PLAYLIST_SECTION_LIST]"
 	);
@@ -15,6 +28,11 @@ export const SectionList = async () => {
 		return null;
 	}
 	return (
+		<section className={sectionClasses}>
+			{data.items.map((item) => (
+				<SectionCard key={item.id} playlist={item} variant={variant} />
+			))}
+		</section>
 		<div className="px-2 lg:px-4 pt-2">
 			<SectionHeader
 				href="/"
