@@ -35,6 +35,7 @@ export const LibraryItemBody = ({ item }: LibraryItemBodyProps) => {
 								fill={true}
 								src={item.images[2]?.url ? item.images[2]?.url : item.images[0]?.url}
 								alt={item.name + "cover photo"}
+								sizes="48px"
 							/>
 						</div>
 						{/* content container */}
@@ -85,6 +86,7 @@ export const LibraryItemBody = ({ item }: LibraryItemBodyProps) => {
 					>
 						<Image
 							fill={true}
+							sizes="48px"
 							src={item.images[2]?.url ? item.images[2]?.url : item.images[0].url}
 							alt={item.name + "cover photo"}
 						/>

@@ -24,6 +24,7 @@ export const LibraryItemBodyLikedSongs = ({ total }: { total: number }) => {
 								fill={true}
 								src="https://misc.scdn.co/liked-songs/liked-songs-64.png"
 								alt="liked songs"
+								sizes="48px"
 							/>
 						</div>
 						{/* content container */}
@@ -63,6 +64,7 @@ export const LibraryItemBodyLikedSongs = ({ total }: { total: number }) => {
 							fill={true}
 							src={"https://misc.scdn.co/liked-songs/liked-songs-64.png"}
 							alt={"liked songs"}
+							sizes="48px"
 						/>
 					</Link>
 				</ActionTooltip>
