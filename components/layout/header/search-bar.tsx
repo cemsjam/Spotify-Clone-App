@@ -2,9 +2,13 @@
 import { useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
+import { usePathname } from "next/navigation";
 
 export const SearchBar = () => {
 	const [searchTerm, setSearchTerm] = useState("");
+	const pathname = usePathname();
+	const isHomePage = pathname === "/";
+	if (isHomePage) return null;
 	return (
 		<form role="search" className=" flex-1">
 			<div className="relative max-w-[364px]">

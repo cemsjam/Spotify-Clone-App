@@ -4,10 +4,16 @@ import Link from "next/link";
 import { footerColumns, socialLinks } from "@/constants/footerNavigationData";
 
 import { capitalizeStr } from "@/utils/capitalize";
-const FooterNavigation = () => {
+import { cn } from "@/utils/cn";
+const FooterNavigation = ({ containerClasses = "" }: { containerClasses?: string }) => {
 	return (
-		<div className="px-2 lg:px-4 pt-2 bg-gradient-to-b from-[#53535330] to-transparent">
-			<footer className="flex flex-col pt-[200px] m-4 ">
+		<div
+			className={cn(
+				"px-2 lg:px-4  bg-gradient-to-b from-[#53535330] to-transparent pt-[200px]",
+				containerClasses
+			)}
+		>
+			<footer className="flex flex-col  m-4 pt-2">
 				<div className="flex justify-between">
 					<div className="flex-[8] grid grid-cols-3">
 						{footerColumns.map((col) => (

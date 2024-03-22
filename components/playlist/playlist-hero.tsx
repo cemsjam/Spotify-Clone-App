@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { Image as ImageType, Owner } from "@/types";
+import { getServerAuthSession } from "@/utils/auth";
 
 interface PlaylistHeroProps {
 	total: number;
@@ -10,13 +11,14 @@ interface PlaylistHeroProps {
 	description?: string;
 }
 
-export const PlaylistHero = ({
+export const PlaylistHero = async ({
 	total,
 	owner,
 	name,
 	images,
 	description,
 }: PlaylistHeroProps) => {
+	const session = await getServerAuthSession();
 	return (
 		<div className=" max-h-[400px] min-height-[340px] p-4 lg:p-[1.125rem_1.5rem]">
 			<div className="flex gap-4">
@@ -40,6 +42,15 @@ export const PlaylistHero = ({
 					</div>
 					{description && <p className="text-subduedText">{description}</p>}
 					<div className="flex text-sm mt-2">
+						{session?.user?.image && (
+							<Image
+								src={session.user.image}
+								width={24}
+								height={24}
+								className="rounded-full mr-1 object-cover"
+								alt={"liked songs cover photo"}
+							/>
+						)}
 						<div className="font-bold">{owner.display_name}</div>
 						<span className="before:content-['•'] before:mx-1 font-bold">{total} songs</span>
 					</div>
