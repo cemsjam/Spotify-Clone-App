@@ -29,8 +29,8 @@ export const LibraryItemBodyLikedSongs = ({ total }: { total: number }) => {
 						</div>
 						{/* content container */}
 						<p className="flex flex-col gap-0.5">
-							<span className="capitalize">Liked Songs</span>
-							<span className="text-subduedText flex gap-1">
+							<span className="capitalize line-clamp-1">Liked Songs</span>
+							<span className="text-subduedText flex gap-1 text-sm">
 								<span className="capitalize">Playlist</span>
 								<span>
 									<span className="mr-1">•</span>

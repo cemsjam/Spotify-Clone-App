@@ -6,11 +6,14 @@ interface FooterPlayerProps {
 	token: string;
 }
 export const FooterPlayer = ({ token }: FooterPlayerProps) => {
-	const { currentTrack } = useTrackStore();
+	const { currentTrack, currentState } = useTrackStore();
 	return (
 		<SpotifyPlayer
 			token={token}
 			uris={currentTrack}
+			syncExternalDevice
+			play={currentState === "play" ? true : false}
+			callback={(state) => console.log(state)}
 			styles={{
 				activeColor: "#1ed760",
 				bgColor: "#000",

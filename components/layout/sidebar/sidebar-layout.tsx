@@ -7,7 +7,7 @@ export const SidebarLayout = ({ children }: { children: React.ReactNode }) => {
 
 	return (
 		<div
-			className={cn("sidebar-parent-grid flex-grow-[4] lg:w-3/4 xl:w-full", {
+			className={cn("sidebar-parent-grid", {
 				"max-w-leftSideBarMinifiedWidth": !isOpen,
 				"max-w-leftSideBarWidth": isOpen,
 			})}

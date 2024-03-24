@@ -1,5 +1,5 @@
 import { SectionList } from "@/components/home/section-list";
-import FooterNavigation from "@/components/layout/footer-navigation";
+import FooterNavigation from "@/components/layout/footer/footer-navigation";
 import { SectionHeader } from "@/components/section-header";
 import { getServerAuthSession } from "@/utils/auth";
 

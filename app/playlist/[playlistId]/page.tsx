@@ -12,9 +12,10 @@ const PlaylistIdPage = async ({ params }: { params: { playlistId: string } }) =>
 		`${process.env.SPOTIFY_API_URL}v1/playlists/${playlistId}`,
 		"[FETCH_PLAYLIST_ID_PAGE]"
 	);
+
 	if (!data) return null;
 	// console.log("playlistId", data.tracks.items);
-	// console.log(data);
+	console.log(data);
 	const { name, owner, images, description } = data;
 	const { total } = data.tracks;
 	const heroProps = { name, owner, images, total, description };
@@ -22,9 +23,9 @@ const PlaylistIdPage = async ({ params }: { params: { playlistId: string } }) =>
 	// console.log(images[1]?.url ? images[1]?.url : images[0]?.url);
 	return (
 		<div className="relative h-[calc(100vh-var(--header-height)-var(--footer-height)-var(--panel-gap))] overflow-y-auto">
-			<BackgroundSetter imageUrl={images[1]?.url ? images[1]?.url : images[0]?.url} />
+			{/* <BackgroundSetter imageUrl={images[1]?.url ? images[1]?.url : images[0]?.url} /> */}
 			<PlaylistHero {...heroProps} />
-			<PlaylistActions label={name} />
+			<PlaylistActions label={name} firstTrack={data.tracks.items[0]} />
 			<TrackTable tracks={data.tracks.items} />
 		</div>
 	);

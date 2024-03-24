@@ -50,7 +50,7 @@ type TrackProps = {
 export const Track = ({ data }: TrackProps) => {
 	const [isHovered, setIsHovered] = useState(false);
 	const [isTrackSaved, setIsTrackSaved] = useState(false);
-	const { currentTrack, setCurrentTrack } = useTrackStore();
+	const { currentTrack, setCurrentTrack, setCurrentState, currentState } = useTrackStore();
 	const { added_at, track, index } = data;
 	const { album } = track;
 
@@ -70,13 +70,23 @@ export const Track = ({ data }: TrackProps) => {
 					{!isHovered && index + 1}
 				</span>
 				{isHovered && (
-					<ActionTooltip side="top" label={"Play " + track.name}>
+					<ActionTooltip
+						side="top"
+						label={currentState === "paused" ? "Play " + track.name : "Pause"}
+					>
 						<button
 							type="button"
 							className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-							onClick={() => setCurrentTrack(track.uri)}
+							onClick={() => {
+								setCurrentTrack("spotify:playlist:2A8KTxig5i31bSCqot5yLg");
+								setCurrentState(currentState === "play" ? "paused" : "play");
+							}}
 						>
-							<BiPlay className="w-6 h-6" />
+							{currentState === "paused" ? (
+								<BiPlay className="w-6 h-6" />
+							) : (
+								<BiPause className="w-6 h-6" />
+							)}
 						</button>
 					</ActionTooltip>
 				)}

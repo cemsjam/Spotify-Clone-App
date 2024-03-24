@@ -40,8 +40,8 @@ export const LibraryItemBody = ({ item }: LibraryItemBodyProps) => {
 						</div>
 						{/* content container */}
 						<p className="flex flex-col gap-0.5">
-							<span className="capitalize">{item.name}</span>
-							<span className="text-subduedText flex gap-1">
+							<span className="capitalize line-clamp-1">{item.name}</span>
+							<span className="text-subduedText flex gap-1 text-sm">
 								<span className="capitalize">{item.type}</span>
 								<span>
 									{item.type === "playlist" && item.name !== "liked songs" && (

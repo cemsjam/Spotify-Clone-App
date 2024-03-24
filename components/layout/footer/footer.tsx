@@ -1,5 +1,5 @@
 import { getTokenInServer } from "@/utils/server-service";
-import { FooterPlayer } from "./footer/footer-player";
+import { FooterPlayer } from "./footer-player";
 
 export const Footer = async () => {
 	const token = await getTokenInServer();
