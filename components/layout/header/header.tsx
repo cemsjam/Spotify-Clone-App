@@ -1,7 +1,7 @@
 import React from "react";
-import { HistoryActions } from "./header/history-actions";
-import { SearchBar } from "./header/search-bar";
-import { Auth } from "./header/auth";
+import { HistoryActions } from "./history-actions";
+import { SearchBar } from "./search-bar";
+import { Auth } from "./auth";
 import { getServerAuthSession } from "@/utils/auth";
 
 export const Header = async () => {

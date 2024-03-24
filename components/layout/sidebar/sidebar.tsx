@@ -1,6 +1,6 @@
-import { NavigationSection } from "./sidebar/navigation-section";
-import { LibrarySection } from "./sidebar/library-section";
-import { SidebarLayout } from "./sidebar/sidebar-layout";
+import { NavigationSection } from "./navigation-section";
+import { LibrarySection } from "./library-section";
+import { SidebarLayout } from "./sidebar-layout";
 import { getServerAuthSession } from "@/utils/auth";
 import { cn } from "@/utils/cn";
 
