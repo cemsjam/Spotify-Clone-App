@@ -8,6 +8,7 @@ import { Sidebar } from "@/components/layout/sidebar";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import AuthProvider from "@/providers/auth-provider";
+import BackgroundSetter from "@/components/playlist/background-setter";
 
 // const font = Inter({ subsets: ["latin"] });
 
@@ -30,10 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 								{children}
 							</main>
 
-							<BackgroundSetter />
-
-							<main>{children}</main>
-
+							{/* <BackgroundSetter /> */}
 						</div>
 					</div>
 					<Footer />

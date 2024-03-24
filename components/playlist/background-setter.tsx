@@ -6,7 +6,7 @@ import { useBackgroundStore } from "@/stores/playlist-background-store";
 
 const BackgroundSetter = () => {
 	const imageUrl = useBackgroundStore((state) => state.currentPlaylistCoverUrl);
-	if (!imageUrl) return null;
+	// if (!imageUrl) return null;
 	const { dominantColor } = useColorExtraction(imageUrl);
 	return (
 		dominantColor && (
