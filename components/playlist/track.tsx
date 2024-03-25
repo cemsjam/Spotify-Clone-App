@@ -80,8 +80,11 @@ export const Track = ({
 							className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
 							onClick={() => {
 								setCurrentTrack(track.uri);
-								setCurrentPlaylist("spotify:playlist:2A8KTxig5i31bSCqot5yLg");
-								setIsPlaying(!isPlaying);
+								setCurrentPlaylist(playlistUri);
+								setIsPlaying((prev) => !prev);
+								console.log("onclick-current", track.uri);
+
+								console.log("onclick", currentTrack);
 							}}
 						>
 							{isActivelyPlaying ? (

@@ -20,7 +20,7 @@ interface TrackState {
 	isPlaying: boolean; // Store the playback state (playing or paused)
 	setCurrentTrack: (trackUri: string) => void;
 	setCurrentPlaylist: (playlistUri: string) => void;
-	setIsPlaying: (isPlaying: boolean) => void;
+	setIsPlaying: (currentState: boolean) => void;
 }
 
 export const useTrackStore = create<TrackState>((set) => ({
@@ -29,5 +29,5 @@ export const useTrackStore = create<TrackState>((set) => ({
 	isPlaying: false, // Initialize with false
 	setCurrentTrack: (trackUri: string) => set({ currentTrack: trackUri }),
 	setCurrentPlaylist: (playlistUri: string) => set({ currentPlaylist: playlistUri }),
-	setIsPlaying: (isPlaying: boolean) => set({ isPlaying: isPlaying }),
+	setIsPlaying: (currentState: boolean) => set({ isPlaying: currentState }),
 }));
