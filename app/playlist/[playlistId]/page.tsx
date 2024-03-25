@@ -15,7 +15,7 @@ const PlaylistIdPage = async ({ params }: { params: { playlistId: string } }) =>
 
 	if (!data) return null;
 	// console.log("playlistId", data.tracks.items);
-	console.log(data);
+
 	const { name, owner, images, description } = data;
 	const { total } = data.tracks;
 	const heroProps = { name, owner, images, total, description };
@@ -25,8 +25,8 @@ const PlaylistIdPage = async ({ params }: { params: { playlistId: string } }) =>
 		<div className="relative h-[calc(100vh-var(--header-height)-var(--footer-height)-var(--panel-gap))] overflow-y-auto">
 			{/* <BackgroundSetter imageUrl={images[1]?.url ? images[1]?.url : images[0]?.url} /> */}
 			<PlaylistHero {...heroProps} />
-			<PlaylistActions label={name} firstTrack={data.tracks.items[0]} />
-			<TrackTable tracks={data.tracks.items} />
+			<PlaylistActions label={name} playlistUri={data.uri} />
+			<TrackTable tracks={data.tracks.items} playlistUri={data.uri} />
 		</div>
 	);
 };
