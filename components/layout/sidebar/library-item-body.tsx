@@ -9,6 +9,7 @@ import { useSidebarStore } from "@/stores/sidebar-store";
 
 import { ActionTooltip } from "@/components/ActionTooltip";
 import { type Playlist } from "@/types";
+import { useTrackStore } from "@/stores/track-store";
 
 interface LibraryItemBodyProps {
 	item: Playlist;
@@ -16,6 +17,7 @@ interface LibraryItemBodyProps {
 
 export const LibraryItemBody = ({ item }: LibraryItemBodyProps) => {
 	const { isOpen } = useSidebarStore();
+	const { currentPlaylist } = useTrackStore;
 	// console.log(item);
 	return (
 		<>
@@ -40,7 +42,13 @@ export const LibraryItemBody = ({ item }: LibraryItemBodyProps) => {
 						</div>
 						{/* content container */}
 						<p className="flex flex-col gap-0.5">
-							<span className="capitalize line-clamp-1">{item.name}</span>
+							<span
+								className={cn("capitalize line-clamp-1", {
+									"text-primary": currentPlaylist === item.uri,
+								})}
+							>
+								{item.name}
+							</span>
 							<span className="text-subduedText flex gap-1 text-sm">
 								<span className="capitalize">{item.type}</span>
 								<span>

@@ -1,4 +1,7 @@
 "use client";
+
+import { useEffect } from "react";
+
 import { useTrackStore } from "@/stores/track-store";
 import SpotifyPlayer from "react-spotify-web-playback";
 
@@ -6,14 +9,23 @@ interface FooterPlayerProps {
 	token: string;
 }
 export const FooterPlayer = ({ token }: FooterPlayerProps) => {
-	const { currentTrack, currentState } = useTrackStore();
+	const { currentPlaylist, isPlaying, setIsPlaying, setCurrentTrack, currentTrack } =
+		useTrackStore();
+	console.log("footerplayer", currentTrack);
 	return (
 		<SpotifyPlayer
 			token={token}
-			uris={currentTrack}
+			uris={currentPlaylist}
+			key={"spotify-player"}
 			syncExternalDevice
-			play={currentState === "play" ? true : false}
-			callback={(state) => console.log(state)}
+			play={isPlaying}
+			callback={(state) => {
+				console.log(state);
+				setIsPlaying(state.isPlaying);
+				setCurrentTrack(state.track.uri);
+			}}
+			inlineVolume
+			initialVolume={0.5}
 			styles={{
 				activeColor: "#1ed760",
 				bgColor: "#000",

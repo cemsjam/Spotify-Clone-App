@@ -1,21 +1,22 @@
 "use client";
 import { BiPlay, BiPause } from "react-icons/bi";
-
 import { FiMoreHorizontal } from "react-icons/fi";
+
+import { useTrackStore } from "@/stores/track-store";
 
 import { Button } from "@/components/shadcn/button";
 import { ActionTooltip } from "@/components/ActionTooltip";
-import { Track } from "@/types";
-import { useTrackStore } from "@/stores/track-store";
 
 export const PlaylistActions = ({
 	label,
-	firstTrack,
+	playlistUri,
 }: {
 	label: string;
-	firstTrack: Track;
+	playlistUri: string;
 }) => {
-	const { currentState, setCurrentTrack, setCurrentState } = useTrackStore();
+	const { currentPlaylist, setCurrentPlaylist, setIsPlaying, isPlaying } = useTrackStore();
+
+	const isPlaylistActivePlaying = currentPlaylist === playlistUri && isPlaying;
 	return (
 		<div className="p-6 flex items-center">
 			<ActionTooltip side="bottom" label={`Play ${label}`}>
@@ -23,19 +24,19 @@ export const PlaylistActions = ({
 					type="button"
 					className="w-14 h-14 rounded-full bg-primary mr-6 lg:mr-8 hover:bg-primaryHighlight hover:scale-110"
 					onClick={() => {
-						setCurrentTrack(firstTrack.track.uri);
-						setCurrentState(currentState === "play" ? "paused" : "play");
+						setCurrentPlaylist(playlistUri);
+						setIsPlaying(!isPlaying);
 					}}
 				>
 					<span className="w-6 h-6 text-black">
-						{currentState === "paused" ? (
+						{isPlaylistActivePlaying ? (
 							<>
-								<BiPlay className="w-full h-full" />
-								<span className="sr-only">Play</span>
+								<BiPause className="w-full h-full" />
+								<span className="sr-only">Pause</span>
 							</>
 						) : (
 							<>
-								<BiPause className="w-full h-full" />
+								<BiPlay className="w-full h-full" />
 								<span className="sr-only">Play</span>
 							</>
 						)}
