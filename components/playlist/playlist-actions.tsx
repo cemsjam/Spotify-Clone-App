@@ -7,14 +7,8 @@ import { useTrackStore } from "@/stores/track-store";
 import { Button } from "@/components/shadcn/button";
 import { ActionTooltip } from "@/components/ActionTooltip";
 
-export const PlaylistActions = ({
-	label,
-	playlistUri,
-}: {
-	label: string;
-	playlistUri: string;
-}) => {
-	const { currentPlaylist, setCurrentPlaylist, setIsPlaying, isPlaying } = useTrackStore();
+export const PlaylistActions = ({ label, playlistUri }: { label: string; playlistUri: string }) => {
+	const { currentPlaylist, setCurrentPlaylist, togglePlaying, isPlaying } = useTrackStore();
 
 	const isPlaylistActivePlaying = currentPlaylist === playlistUri && isPlaying;
 	return (
@@ -25,7 +19,7 @@ export const PlaylistActions = ({
 					className="w-14 h-14 rounded-full bg-primary mr-6 lg:mr-8 hover:bg-primaryHighlight hover:scale-110"
 					onClick={() => {
 						setCurrentPlaylist(playlistUri);
-						setIsPlaying(!isPlaying);
+						togglePlaying();
 					}}
 				>
 					<span className="w-6 h-6 text-black">
@@ -44,10 +38,7 @@ export const PlaylistActions = ({
 				</Button>
 			</ActionTooltip>
 			<ActionTooltip side="top" label={`More Options For ${label}`}>
-				<button
-					type="button"
-					className="py-3 text-subduedText hover:text-baseText hover:scale-105"
-				>
+				<button type="button" className="py-3 text-subduedText hover:text-baseText hover:scale-105">
 					<span>
 						<FiMoreHorizontal className="w-8 h-8" />
 					</span>

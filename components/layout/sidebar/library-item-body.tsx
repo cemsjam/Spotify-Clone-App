@@ -17,7 +17,7 @@ interface LibraryItemBodyProps {
 
 export const LibraryItemBody = ({ item }: LibraryItemBodyProps) => {
 	const { isOpen } = useSidebarStore();
-	const { currentPlaylist } = useTrackStore;
+	const { currentPlaylist } = useTrackStore();
 	// console.log(item);
 	return (
 		<>
