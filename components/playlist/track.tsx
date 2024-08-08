@@ -44,21 +44,31 @@ interface TrackWithIndex extends TrackType {
 	index: number;
 }
 
-export const Track = ({
-	data,
-	playlistUri,
-}: {
-	data: TrackWithIndex;
-	playlistUri: string;
-}) => {
+export const Track = ({ data, playlistUri }: { data: TrackWithIndex; playlistUri: string }) => {
 	const [isHovered, setIsHovered] = useState(false);
 	const [isTrackSaved, setIsTrackSaved] = useState(false);
-	const { setCurrentPlaylist, currentTrack, setCurrentTrack, isPlaying, setIsPlaying } =
+	const { setCurrentPlaylist, currentPlaylist, currentTrack, setCurrentTrack, isPlaying, setIsPlaying, setOffset } =
 		useTrackStore();
 	const { added_at, track, index } = data;
 	const { album } = track;
-
 	const isActivelyPlaying = currentTrack === track.uri && isPlaying;
+	const activeTrack = currentTrack === track.uri;
+	// console.log(currentTrack, track.uri, isActivelyPlaying);
+
+	const handleTrackClick = () => {
+		console.log("Clicked Track:", track.name, data);
+		console.log(activeTrack);
+		if (!activeTrack) {
+			setOffset(index);
+			setCurrentTrack(track.uri);
+			setIsPlaying(true);
+		} else {
+			setIsPlaying(!isPlaying);
+		}
+		if (currentPlaylist !== playlistUri) {
+			setCurrentPlaylist(playlistUri);
+		}
+	};
 	return (
 		<li
 			className="track-table-body hover:bg-contextBg rounded-sm group"
@@ -78,20 +88,9 @@ export const Track = ({
 						<button
 							type="button"
 							className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-							onClick={() => {
-								setCurrentTrack(track.uri);
-								setCurrentPlaylist(playlistUri);
-								setIsPlaying((prev) => !prev);
-								console.log("onclick-current", track.uri);
-
-								console.log("onclick", currentTrack);
-							}}
+							onClick={handleTrackClick}
 						>
-							{isActivelyPlaying ? (
-								<BiPause className="w-6 h-6" />
-							) : (
-								<BiPlay className="w-6 h-6" />
-							)}
+							{isActivelyPlaying ? <BiPause className="w-6 h-6" /> : <BiPlay className="w-6 h-6" />}
 						</button>
 					</ActionTooltip>
 				)}
@@ -112,7 +111,7 @@ export const Track = ({
 						href={`/track/${track.id}`}
 						className={cn("text-base truncate hover:underline", {
 							"text-baseText": isHovered && !isActivelyPlaying,
-							"text-primary": isActivelyPlaying,
+							"text-primary": isActivelyPlaying || activeTrack,
 						})}
 					>
 						{track.name}
@@ -163,10 +162,7 @@ export const Track = ({
 				)}
 				{!isTrackSaved && (
 					<ActionTooltip side="top" label="Save to Your Library">
-						<button
-							type="button"
-							className="mr-4 text-subuedText hover:text-baseText invisible group-hover:visible"
-						>
+						<button type="button" className="mr-4 text-subuedText hover:text-baseText invisible group-hover:visible">
 							{notSavedTrackIcon}
 						</button>
 					</ActionTooltip>
