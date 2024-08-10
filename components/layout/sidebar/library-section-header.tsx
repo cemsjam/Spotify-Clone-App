@@ -73,12 +73,9 @@ export const LibrarySectionHeader = () => {
 					<ActionTooltip label="Create playlist or folder" disabled={!isLoggedIn}>
 						<button
 							disabled={!isLoggedIn}
-							className={cn(
-								"disabled:cursor-not-allowed p-2 rounded-full text-subduedText   transition-colors",
-								{
-									"hover:text-baseText hover:bg-highlightBg": isLoggedIn,
-								}
-							)}
+							className={cn("disabled:cursor-not-allowed p-2 rounded-full text-subduedText   transition-colors", {
+								"hover:text-baseText hover:bg-highlightBg": isLoggedIn,
+							})}
 						>
 							<AiOutlinePlus />
 							<span className="sr-only">Create Playlist or folder</span>

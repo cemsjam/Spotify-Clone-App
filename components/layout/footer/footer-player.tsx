@@ -12,18 +12,19 @@ export const FooterPlayer = ({ token }: FooterPlayerProps) => {
 	return (
 		<SpotifyPlayer
 			token={token}
-			uris={currentTrack}
+			uris={currentPlaylist}
 			key={"spotify-player"}
 			syncExternalDevice
 			play={isPlaying}
-			// callback={(state) => {
-			// 	console.log("Player State Change:", state);
-			// 	// setCurrentTrack(state.track.uri);
-			// 	// Ensure the play/pause state is synchronized
-			// 	if (state.isPlaying !== isPlaying) {
-			// 		setIsPlaying(true);
-			// 	}
-			// }}
+			offset={offset}
+			callback={(state) => {
+				if (state.track.uri !== currentTrack) {
+					setCurrentTrack(state.track.uri);
+				}
+				if (state.isPlaying !== isPlaying) {
+					setIsPlaying(true);
+				}
+			}}
 			inlineVolume
 			initialVolume={0.5}
 			styles={{

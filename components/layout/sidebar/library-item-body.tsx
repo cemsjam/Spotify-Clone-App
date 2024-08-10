@@ -68,7 +68,7 @@ export const LibraryItemBody = ({ item }: LibraryItemBodyProps) => {
 					side="right"
 					label={
 						<p className="flex flex-col gap-0.5 p-1">
-							<span className="capitalize">{item.name}</span>
+							<span className={cn("capitalize", { "text-primary": currentPlaylist === item.uri })}>{item.name}</span>
 							<span className="text-subduedText flex gap-1">
 								<span className="capitalize">{item.type}</span>
 								<span>
@@ -80,17 +80,15 @@ export const LibraryItemBody = ({ item }: LibraryItemBodyProps) => {
 									)}
 								</span>
 							</span>
+							<span></span>
 						</p>
 					}
 				>
 					<Link
 						href={`/playlist/${item.id}`}
-						className={cn(
-							"block w-12 h-12 relative overflow-hidden rounded-md flex-shrink-0 m-auto",
-							{
-								"rounded-full": item.type === "artist",
-							}
-						)}
+						className={cn("block w-12 h-12 relative overflow-hidden rounded-md flex-shrink-0 m-auto", {
+							"rounded-full": item.type === "artist",
+						})}
 					>
 						<Image
 							fill={true}

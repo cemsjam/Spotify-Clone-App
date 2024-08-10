@@ -7,7 +7,7 @@ export const SidebarLayout = ({ children }: { children: React.ReactNode }) => {
 
 	return (
 		<div
-			className={cn("sidebar-parent-grid", {
+			className={cn("sidebar-parent-grid hidden lg:block", {
 				"max-w-leftSideBarMinifiedWidth": !isOpen,
 				"max-w-leftSideBarWidth": isOpen,
 			})}

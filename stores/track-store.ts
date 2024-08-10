@@ -32,6 +32,7 @@ export const useTrackStore = create<TrackState>((set) => ({
 	currentPlaylist: "",
 	isPlaying: false, // Initialize with false
 	offset: 0,
+
 	setOffset: (number) => set({ offset: number }),
 	setCurrentTrack: (trackUri: string) => set({ currentTrack: trackUri }),
 	setCurrentPlaylist: (playlistUri: string) => set({ currentPlaylist: playlistUri }),
