@@ -3,7 +3,6 @@ import { Track } from "./track";
 import { TrackTableHeader } from "./track-table-header";
 
 export const TrackTable = ({ tracks, playlistUri }: { tracks: TrackType[]; playlistUri: string }) => {
-	console.log(tracks);
 	return (
 		<div className="track-table text-sm">
 			<TrackTableHeader />

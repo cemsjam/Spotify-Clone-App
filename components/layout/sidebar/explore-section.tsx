@@ -25,9 +25,7 @@ const ExploreSection = () => {
 						<div className="invisible p-4 bg-[#0d72ea] min-w-[330px] absolute left-[calc(100%+2rem)] top-1/2 -translate-y-1/2 translate-x-2 h-[calc(100%+2rem)] opacity-10 group-focus-within:visible group-focus-within:translate-x-0 group-focus-within:opacity-100 transition-all duration-500 rounded-base flex flex-col gap-5">
 							<div className="flex flex-col gap-2">
 								<div className="font-bold whitespace-nowrap">Create a playlist</div>
-								<p className="text-sm whitespace-nowrap">
-									Log in to create and share playlists.
-								</p>
+								<p className="text-sm whitespace-nowrap">Log in to create and share playlists.</p>
 							</div>
 							<div className="ml-auto">
 								<Button
@@ -51,7 +49,10 @@ const ExploreSection = () => {
 						</div>
 						<Link
 							href="/todo/genres/browse"
-							className="py-1 px-4 leading-normal flex items-center justify-center w-fit h-8 text-sm rounded-full bg-white text-black font-bold hover:scale-105"
+							tabIndex={-1}
+							aria-disabled="true"
+							onClick={(e) => e.preventDefault()}
+							className="cursor-not-allowed py-1 px-4 leading-normal flex items-center justify-center w-fit h-8 text-sm rounded-full bg-white text-black font-bold hover:scale-105"
 						>
 							Browse podcasts
 						</Link>
