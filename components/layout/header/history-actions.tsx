@@ -1,12 +1,12 @@
 import { ActionTooltip } from "@/components/ActionTooltip";
 import { PiCaretLeftLight, PiCaretRightLight } from "react-icons/pi";
 import { cn } from "@/utils/cn";
-import { getServerAuthSession } from "@/utils/auth";
+import { useSession } from "next-auth/react";
 
-export const HistoryActions = async () => {
-	const session = await getServerAuthSession();
+export const HistoryActions = () => {
+	const { status } = useSession();
 
-	const isDisabled = !session;
+	const isDisabled = status === "unauthenticated" || status === "loading";
 
 	return (
 		<div className="flex gap-panelGap">

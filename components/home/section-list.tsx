@@ -12,7 +12,7 @@ export type SectionListTypes = {
 export const SectionList = async ({
 	variant,
 	sectionClasses,
-	limit = 10,
+	limit = 12,
 }: {
 	variant: SectionCardVariants;
 	sectionClasses: string;
