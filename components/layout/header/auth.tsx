@@ -14,8 +14,10 @@ import {
 import { Button } from "@/components/shadcn/button";
 
 export const Auth = () => {
-	const { data: session } = useSession();
-
+	const { data: session, status } = useSession();
+	if (status === "loading") {
+		return null;
+	}
 	if (session) {
 		return (
 			<>

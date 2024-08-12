@@ -11,13 +11,7 @@ interface PlaylistHeroProps {
 	description?: string;
 }
 
-export const PlaylistHero = async ({
-	total,
-	owner,
-	name,
-	images,
-	description,
-}: PlaylistHeroProps) => {
+export const PlaylistHero = async ({ total, owner, name, images, description }: PlaylistHeroProps) => {
 	const session = await getServerAuthSession();
 	return (
 		<div className=" max-h-[400px] min-height-[340px] p-4 lg:p-[1.125rem_1.5rem]">
@@ -37,7 +31,7 @@ export const PlaylistHero = async ({
 				<div className="flex flex-col justify-end">
 					<span className="text-sm">Playlist</span>
 					<div className="mt-2">
-						<h1 className="text-baseText text-3xl xl:text-5xl 2xl:text-7xl font-bold line-clamp-3 leading-normal mt-[0.08em] mb-[0.12em]">
+						<h1 className="text-baseText text-3xl xl:text-5xl 2xl:text-7xl font-bold line-clamp-3 !leading-[1.5] mt-[0.08em] mb-[0.12em]">
 							{name}
 						</h1>
 					</div>

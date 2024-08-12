@@ -7,7 +7,12 @@ import { capitalizeStr } from "@/utils/capitalize";
 import { cn } from "@/utils/cn";
 const FooterNavigation = ({ containerClasses = "" }: { containerClasses?: string }) => {
 	return (
-		<div className={cn("px-2 lg:px-4  bg-gradient-to-b from-[#53535330] to-transparent pt-[200px]", containerClasses)}>
+		<div
+			className={cn(
+				"px-2 lg:px-4  bg-gradient-to-b from-[#53535330] to-transparent lg:pt-[100px] mt-auto",
+				containerClasses
+			)}
+		>
 			<footer className="flex flex-col  m-4 pt-2">
 				{/* footer-container */}
 				<div className="flex flex-col gap-8 justify-between lg:flex-row lg:gap-0">

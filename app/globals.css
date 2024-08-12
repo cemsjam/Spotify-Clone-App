@@ -72,10 +72,7 @@ body {
 .track-table-header,
 .track-table-body {
 	display: grid;
-	grid-template-columns: [index] 16px [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(
-			120px,
-			1fr
-		);
+	grid-template-columns: [index] 16px [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px, 1fr);
 
 	gap: 1rem;
 }
@@ -116,3 +113,20 @@ a[aria-label="Play on Spotify"] {
 }
 
 /* #endregion */
+
+.signup-bg-gradient {
+	background-image: linear-gradient(90deg, #af2896, #509bf5);
+}
+.overflow-slider {
+	overflow-x: scroll; /* Enable horizontal scrolling */
+	-ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
+	scrollbar-width: none;
+	scroll-snap-type: x mandatory; /* Enable scroll snap */
+	scroll-behavior: smooth; /* Smooth scrolling between snaps */
+}
+.overflow-slider::-webkit-scrollbar {
+	display: none;
+}
+.overflow-slider > * {
+	scroll-snap-align: start; /* Snap the slide to the start of the container */
+}
