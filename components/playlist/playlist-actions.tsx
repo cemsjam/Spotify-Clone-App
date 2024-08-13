@@ -8,7 +8,16 @@ import { Button } from "@/components/shadcn/button";
 import { ActionTooltip } from "@/components/ActionTooltip";
 
 export const PlaylistActions = ({ label, playlistUri }: { label: string; playlistUri: string }) => {
-	const { currentPlaylist, setCurrentPlaylist, togglePlaying, isPlaying } = useTrackStore();
+	const { currentPlaylist, setCurrentPlaylist, isPlaying, setIsPlaying } = useTrackStore();
+
+	const handlePlayButtonClick = () => {
+		if (currentPlaylist !== playlistUri) {
+			setCurrentPlaylist(playlistUri);
+			setIsPlaying(true);
+		} else {
+			setIsPlaying(!isPlaying);
+		}
+	};
 
 	const isPlaylistActivePlaying = currentPlaylist === playlistUri && isPlaying;
 	return (
@@ -17,10 +26,7 @@ export const PlaylistActions = ({ label, playlistUri }: { label: string; playlis
 				<Button
 					type="button"
 					className="w-14 h-14 rounded-full bg-primary mr-6 lg:mr-8 hover:bg-primaryHighlight hover:scale-110"
-					onClick={() => {
-						setCurrentPlaylist(playlistUri);
-						togglePlaying();
-					}}
+					onClick={handlePlayButtonClick}
 				>
 					<span className="w-6 h-6 text-black">
 						{isPlaylistActivePlaying ? (
