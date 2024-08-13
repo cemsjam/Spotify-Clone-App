@@ -19,13 +19,14 @@ export default async function Home() {
 				<div className="px-2 lg:px-4 pt-2">
 					<SectionList
 						variant="vertical"
-						sectionClasses="hidden sm:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-[12px]"
+						sectionClasses="hidden sm:grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 xxl:grid-cols-4 gap-[12px]"
 						limit={8}
 					/>
 				</div>
 				<div className="px-2 lg:px-4 pt-2">
 					<SectionHeader
 						href={"/"}
+						hideButton
 						label={"Your Playlists"}
 						containerClasses="mb-4"
 						headingClasses="font-bold text-3xl"

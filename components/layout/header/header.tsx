@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { HistoryActions } from "./history-actions";
 import { SearchBar } from "./search-bar";

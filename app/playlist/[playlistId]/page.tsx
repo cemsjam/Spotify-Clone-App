@@ -14,13 +14,11 @@ const PlaylistIdPage = async ({ params }: { params: { playlistId: string } }) =>
 	);
 
 	if (!data) return null;
-	// console.log("playlistId", data.tracks.items);
 
 	const { name, owner, images, description } = data;
 	const { total } = data.tracks;
 	const heroProps = { name, owner, images, total, description };
 
-	// console.log(images[1]?.url ? images[1]?.url : images[0]?.url);
 	return (
 		<div className="relative h-[calc(100vh-var(--header-height)-var(--footer-height)-var(--panel-gap))] overflow-y-auto">
 			<div className="relative">

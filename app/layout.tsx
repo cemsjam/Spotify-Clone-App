@@ -7,9 +7,7 @@ import { cn } from "@/utils/cn";
 import { Sidebar } from "@/components/layout/sidebar/sidebar";
 import { Footer } from "@/components/layout/footer/footer";
 import AuthProvider from "@/providers/auth-provider";
-import BackgroundSetter from "@/components/playlist/background-setter";
 import HeaderContainer from "@/components/layout/header/header-container";
-import { getServerAuthSession } from "@/utils/auth";
 
 // const font = Inter({ subsets: ["latin"] });
 
@@ -18,9 +16,7 @@ export const metadata: Metadata = {
 	description: "Spotify Clone By Cems",
 };
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-	const session = await getServerAuthSession();
-	console.log(session);
+export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en">
 			<AuthProvider>
