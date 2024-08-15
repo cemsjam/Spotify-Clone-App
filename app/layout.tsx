@@ -8,6 +8,7 @@ import { Sidebar } from "@/components/layout/sidebar/sidebar";
 import { Footer } from "@/components/layout/footer/footer";
 import AuthProvider from "@/providers/auth-provider";
 import HeaderContainer from "@/components/layout/header/header-container";
+import { Toaster } from "@/components/toaster";
 
 // const font = Inter({ subsets: ["latin"] });
 
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 						</div>
 					</div>
 					<Footer />
+					<Toaster />
 				</body>
 			</AuthProvider>
 		</html>

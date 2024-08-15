@@ -1,15 +1,27 @@
+"use client";
 import Image from "next/image";
-import { BsPlayFill } from "react-icons/bs";
+import { BiPlay, BiPause } from "react-icons/bi";
 
 import { type Playlist } from "@/types";
 import { Button } from "@/components/shadcn/button";
 import Link from "next/link";
+import { useTrackStore } from "@/stores/track-store";
 
 export type SectionCardVariants = "default" | "vertical";
 
 export const SectionCard = ({ playlist, variant }: { playlist: Playlist; variant: SectionCardVariants }) => {
+	const { currentPlaylist, setCurrentPlaylist, isPlaying, setIsPlaying } = useTrackStore();
 	const { images, description, name, id } = playlist;
 
+	const handlePlayButtonClick = () => {
+		if (currentPlaylist !== playlist.uri) {
+			setCurrentPlaylist(playlist.uri);
+			setIsPlaying(true);
+		} else {
+			setIsPlaying(!isPlaying);
+		}
+	};
+	const isPlaylistActivePlaying = currentPlaylist === playlist.uri && isPlaying;
 	if (variant === "default") {
 		return (
 			<div className="p-4 bg-highlightBg rounded-base hover:bg-contextBg transition-colors group cursor-pointer">
@@ -21,9 +33,12 @@ export const SectionCard = ({ playlist, variant }: { playlist: Playlist; variant
 							alt={"Playlist" + name + "cover image"}
 						/>
 					</Link>
-					<Button className="w-12 h-12 rounded-full bg-primary absolute right-2 bottom-2 translate-y-2 opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 transition-all ease-in-out duration-300 shadow-[0_8px_8px_rgba(0,0,0,.3)]">
+					<Button
+						onClick={handlePlayButtonClick}
+						className="w-12 h-12 rounded-full bg-primary absolute right-2 bottom-2 translate-y-2 opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 transition-all ease-in-out duration-300 shadow-[0_8px_8px_rgba(0,0,0,.3)]"
+					>
 						<span className="flex items-center justify-center w-6 h-6 text-black">
-							<BsPlayFill className="w-6 h-6" />
+							{isPlaylistActivePlaying ? <BiPause className="w-6 h-6" /> : <BiPlay className="w-6 h-6" />}
 						</span>
 					</Button>
 				</div>
@@ -45,9 +60,12 @@ export const SectionCard = ({ playlist, variant }: { playlist: Playlist; variant
 				>
 					{name}
 				</Link>
-				<Button className="self-center w-12 h-12 rounded-full bg-primary  opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 transition-all ease-in-out duration-300 shadow-[0_8px_8px_rgba(0,0,0,.3)]">
+				<Button
+					onClick={handlePlayButtonClick}
+					className="self-center w-12 h-12 rounded-full bg-primary  opacity-0 invisible group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 transition-all ease-in-out duration-300 shadow-[0_8px_8px_rgba(0,0,0,.3)]"
+				>
 					<span className="flex items-center justify-center w-6 h-6 text-black">
-						<BsPlayFill className="w-6 h-6" />
+						{isPlaylistActivePlaying ? <BiPause className="w-6 h-6" /> : <BiPlay className="w-6 h-6" />}
 					</span>
 				</Button>
 			</div>

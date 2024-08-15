@@ -6,9 +6,11 @@ import { useTrackStore } from "@/stores/track-store";
 
 import { Button } from "@/components/shadcn/button";
 import { ActionTooltip } from "@/components/ActionTooltip";
+import { useToast } from "@/hooks/use-toast";
 
 export const PlaylistActions = ({ label, playlistUri }: { label: string; playlistUri: string }) => {
 	const { currentPlaylist, setCurrentPlaylist, isPlaying, setIsPlaying } = useTrackStore();
+	const { toast } = useToast();
 
 	const handlePlayButtonClick = () => {
 		if (currentPlaylist !== playlistUri) {
@@ -44,7 +46,16 @@ export const PlaylistActions = ({ label, playlistUri }: { label: string; playlis
 				</Button>
 			</ActionTooltip>
 			<ActionTooltip side="top" label={`More Options For ${label}`}>
-				<button type="button" className="py-3 text-subduedText hover:text-baseText hover:scale-105">
+				<button
+					onClick={(e) => {
+						e.preventDefault();
+						toast({
+							description: "“For demonstration purposes only, no functionality is active.”",
+						});
+					}}
+					type="button"
+					className="py-3 text-subduedText hover:text-baseText hover:scale-105"
+				>
 					<span>
 						<FiMoreHorizontal className="w-8 h-8" />
 					</span>
