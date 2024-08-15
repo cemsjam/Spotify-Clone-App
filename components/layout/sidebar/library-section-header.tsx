@@ -6,6 +6,7 @@ import { useSidebarStore } from "@/stores/sidebar-store";
 import { ActionTooltip } from "@/components/ActionTooltip";
 import { useSession } from "next-auth/react";
 import { cn } from "@/utils/cn";
+import { useToast } from "@/hooks/use-toast";
 
 const collapseIcon = (
 	<svg
@@ -37,6 +38,7 @@ const expandIcon = (
 export const LibrarySectionHeader = () => {
 	const { isOpen, toggleSidebar } = useSidebarStore();
 	const { status } = useSession();
+	const { toast } = useToast();
 
 	const isLoggedIn = status === "authenticated";
 	return (
@@ -72,6 +74,12 @@ export const LibrarySectionHeader = () => {
 				<div className="flex gap-panelGap">
 					<ActionTooltip label="Create playlist or folder" disabled={!isLoggedIn}>
 						<button
+							onClick={(e) => {
+								e.preventDefault();
+								toast({
+									description: "“For demonstration purposes only, no functionality is active.”",
+								});
+							}}
 							disabled={!isLoggedIn}
 							className={cn("disabled:cursor-not-allowed p-2 rounded-full text-subduedText   transition-colors", {
 								"hover:text-baseText hover:bg-highlightBg": isLoggedIn,
@@ -83,7 +91,15 @@ export const LibrarySectionHeader = () => {
 					</ActionTooltip>
 					{status === "authenticated" && (
 						<ActionTooltip label="Show More">
-							<button className="p-2 rounded-full text-subduedText hover:text-baseText hover:bg-highlightBg transition-colors">
+							<button
+								onClick={(e) => {
+									e.preventDefault();
+									toast({
+										description: "“For demonstration purposes only, no functionality is active.”",
+									});
+								}}
+								className="p-2 rounded-full text-subduedText hover:text-baseText hover:bg-highlightBg transition-colors"
+							>
 								<AiOutlineArrowRight />
 								<span className="sr-only">Show More</span>
 							</button>

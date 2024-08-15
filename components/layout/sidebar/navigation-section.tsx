@@ -7,12 +7,13 @@ import { ActionTooltip } from "@/components/ActionTooltip";
 import { cn } from "@/utils/cn";
 import { useSession } from "next-auth/react";
 import Logo from "@/components/Logo";
+import { useToast } from "@/hooks/use-toast";
 
 export const NavigationSection = () => {
 	const pathname = usePathname();
 	const { isOpen } = useSidebarStore();
 	const { status } = useSession();
-
+	const { toast } = useToast();
 	return (
 		<nav>
 			<ul className="flex flex-col" role="list">
@@ -26,6 +27,14 @@ export const NavigationSection = () => {
 						return (
 							<li key={item.label} className="py-1 px-3">
 								<Link
+									onClick={(e) => {
+										if (item.route === "/search") {
+											e.preventDefault();
+											toast({
+												description: "This feature is not active at the moment.",
+											});
+										}
+									}}
 									href={item.route}
 									className={cn(
 										"flex items-center gap-5 h-10 font-bold text-subduedText hover:text-baseText transition-colors",
@@ -44,6 +53,14 @@ export const NavigationSection = () => {
 							<ActionTooltip key={item.label} side="right" label={item.label}>
 								<li key={item.label} className="py-1 px-3">
 									<Link
+										onClick={(e) => {
+											if (item.route === "/search") {
+												e.preventDefault();
+												toast({
+													description: "This feature is not active at the moment.",
+												});
+											}
+										}}
 										href={item.route}
 										className="flex items-center gap-5 h-10 font-bold text-subduedText hover:text-baseText transition-colors"
 									>

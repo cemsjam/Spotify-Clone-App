@@ -12,6 +12,7 @@ import { ActionTooltip } from "@/components/ActionTooltip";
 import { msToDuration } from "@/utils/ms-to-duration";
 import { cn } from "@/utils/cn";
 import { useTrackStore } from "@/stores/track-store";
+import { useToast } from "@/hooks/use-toast";
 
 const savedTrackIcon = (
 	<svg
@@ -52,6 +53,8 @@ export const Track = ({ data, playlistUri }: TrackComponentProps) => {
 	const [isTrackSaved, setIsTrackSaved] = useState(false);
 	const { setCurrentPlaylist, currentPlaylist, currentTrack, setCurrentTrack, isPlaying, setIsPlaying, setOffset } =
 		useTrackStore();
+	const { toast } = useToast();
+
 	const { added_at, track, index } = data;
 	const { album } = track;
 	const isActivelyPlaying = currentTrack === track.uri && isPlaying;
@@ -67,6 +70,18 @@ export const Track = ({ data, playlistUri }: TrackComponentProps) => {
 		if (currentPlaylist !== playlistUri) {
 			setCurrentPlaylist(playlistUri);
 		}
+		// console.log("trackuri", track.uri);
+		// console.log("cur", currentTrack);
+		// if (currentTrack) {
+		// 	fetch(`/api/player`)
+		// 		.then((res) => res.json())
+		// 		.then((playerState) => {
+		// 			console.log(playerState);
+		// 			const requestedPlaylistUri = playerState.context.uri;
+		// 			const requestedTrackUri = playerState.item.uri;
+		// 			console.log(requestedPlaylistUri, requestedTrackUri);
+		// 		});
+		// }
 	};
 	return (
 		<li
@@ -132,6 +147,12 @@ export const Track = ({ data, playlistUri }: TrackComponentProps) => {
 									})}
 									key={artist.id}
 									href={`/artist/${artist.id}`}
+									onClick={(e) => {
+										e.preventDefault();
+										toast({
+											description: "Artist pages are not active at the moment.",
+										});
+									}}
 								>
 									{artist.name}
 								</Link>
@@ -142,6 +163,12 @@ export const Track = ({ data, playlistUri }: TrackComponentProps) => {
 									})}
 									key={artist.id}
 									href={`/artist/${artist.id}`}
+									onClick={(e) => {
+										e.preventDefault();
+										toast({
+											description: "Artist pages are not active at the moment.",
+										});
+									}}
 								>
 									{artist.name},
 								</Link>
@@ -152,6 +179,12 @@ export const Track = ({ data, playlistUri }: TrackComponentProps) => {
 			</div>
 			<Link
 				href={`/album/${album.id}`}
+				onClick={(e) => {
+					e.preventDefault();
+					toast({
+						description: "Album pages are not active at the moment.",
+					});
+				}}
 				className={cn("truncate text-subduedText hover:underline hover:text-baseText", {
 					"text-baseText": isHovered,
 				})}
@@ -162,14 +195,32 @@ export const Track = ({ data, playlistUri }: TrackComponentProps) => {
 			<div className="text-subduedText col-[last]">
 				{isTrackSaved && (
 					<ActionTooltip side="top" label="Remove from Your Library">
-						<button type="button" className="mr-4 text-primary">
+						<button
+							onClick={(e) => {
+								e.preventDefault();
+								toast({
+									description: "“For demonstration purposes only, no functionality is active.”",
+								});
+							}}
+							type="button"
+							className="mr-4 text-primary"
+						>
 							{savedTrackIcon}
 						</button>
 					</ActionTooltip>
 				)}
 				{!isTrackSaved && (
 					<ActionTooltip side="top" label="Save to Your Library">
-						<button type="button" className="mr-4 text-subuedText hover:text-baseText invisible group-hover:visible">
+						<button
+							type="button"
+							onClick={(e) => {
+								e.preventDefault();
+								toast({
+									description: "“For demonstration purposes only, no functionality is active.”",
+								});
+							}}
+							className="mr-4 text-subuedText hover:text-baseText invisible group-hover:visible"
+						>
 							{notSavedTrackIcon}
 						</button>
 					</ActionTooltip>
@@ -177,7 +228,15 @@ export const Track = ({ data, playlistUri }: TrackComponentProps) => {
 				<span className="ml-4">{msToDuration(track.duration_ms)}</span>
 				{isHovered && (
 					<ActionTooltip side="top" label={"More Options for" + track.name}>
-						<button type="button">
+						<button
+							type="button"
+							onClick={(e) => {
+								e.preventDefault();
+								toast({
+									description: "“For demonstration purposes only, no functionality is active.”",
+								});
+							}}
+						>
 							<FiMoreHorizontal className="ml-4 text-baseText w-4 h-4" />
 						</button>
 					</ActionTooltip>
